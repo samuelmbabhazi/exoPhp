@@ -26,15 +26,8 @@
             </thead>
             <tbody>
                 <?php
-                $servername="localhost";
-                $username="phpmyadmin";
-                $password="password";
-                $database="humanress";
+                include 'dbconnect.php';
 
-                $connection=new mysqli($servername,$username,$password,$database);
-                if ($connection->connect_error) {
-                    die("Connection failed:" .$connection->connect_error);
-                } 
 
                 $sql="SELECT * FROM employes";
                 $result=$connection->query($sql);
