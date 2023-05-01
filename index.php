@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Humanres</title>
 </head>
-<body class="bg-[url('https://cdn.pixabay.com/photo/2015/12/03/08/50/paper-1074131_960_720.jpg')]">
+<body >
     <div class="flex justify-center flex-col items-center p-16 gap-6">
         <h2 class="text-[30px] font-bold uppercase">Liste des employés</h2>
         <a href="/create.php" role="button" class='focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'>Nouveau</a>
@@ -15,16 +15,16 @@
         <table class="min-w-full text-left text-sm font-light">
             <thead class="border-b font-medium dark:border-neutral-500">
                 <tr>
-                    <th scope="col" class="px-6 py-4">ID</th>
-                    <th scope="col" class="px-6 py-4">NOM</th>
-                    <th scope="col" class="px-6 py-4">EMAIL</th>
-                    <th scope="col" class="px-6 py-4">PHONE</th>
-                    <th scope="col" class="px-6 py-4">ADDRESS</th>
-                    <th scope="col" class="px-6 py-4">CREE</th>
-                    <th scope="col" class="px-6 py-4">ACTION</th>
+                    <th  class="px-6 py-4">ID</th>
+                    <th  class="px-6 py-4">NOM</th>
+                    <th  class="px-6 py-4">EMAIL</th>
+                    <th  class="px-6 py-4">PHONE</th>
+                    <th  class="px-6 py-4">ADDRESS</th>
+                    <th  class="px-6 py-4">CREE</th>
+                    <th  class="px-6 py-4">ACTION</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="bg-[white] rounded-md p-20 shadow-md" >
                 <?php
                 include 'dbconnect.php';
 
