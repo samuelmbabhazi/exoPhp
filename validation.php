@@ -47,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $connection->close();
 
         $successMessage= 'Les données ont été insérées avec succès dans la base de données.';
+        header("location:/index.php");
     } else {
         // Afficher les erreurs de validation
         if (count($validator->getMessages())>1) {
