@@ -1,38 +1,20 @@
 <?php
- include 'dbconnect.php';
- 
-$id="";
-$name="";
-$email="";
-$phone="";
-$address="";
+include 'validation.php'; 
 
 
-$errorMessage="";
-
-$sucessMessage="";
 
 if ($_SERVER['REQUEST_METHOD']=='GET') {
-  if (!isset($_GET["id"])) {
-    header("location:/index.php");
-    exit;
-  }
+ 
   $id=$_GET["id"];
 
-  $sql="SELECT * FROM employes WHERE id=$id";
-  $result=$connection->query($sql);
-  $row=$result->fetch_assoc();
+  $row =$employeRepo->getEmployeById($id);
 
-  if (!$row) {
-    header("location:/index.php");
-    exit;
-  }
   $name=$row["name"];
   $email=$row["email"];
   $phone=$row["phone"];
   $address=$row["address"];
 }
-else{
+if($_SERVER['REQUEST_METHOD']=='POST'){
     $id=$_POST["id"];
     $name=$_POST["name"];
     $email=$_POST["email"];
@@ -40,24 +22,14 @@ else{
     $address=$_POST["address"];
 
 
-do {
-    if (empty($id)||empty($name)||empty($email)||empty($phone)||empty($address)) {
-        $errorMessage="All the fields are required";
-        break;
-    }
 
-    $sql="UPDATE employes SET name='$name',email='$email',phone='$phone',address='$address' WHERE id=$id";
-    $result=$connection->query($sql);
-    if(!$result){
-        $errorMessage="Invalid query: " . $connection->error;
-        break;
-    }
-    $successMessage="client updated correctly";
-
-    header("location:/index.php");
-    exit;
- } while (true);
+    $employeRepo->updateEmploye($name,$email,$phone,$address,$id);
     
+    
+
+   
+ 
+
 }
 
 ?>

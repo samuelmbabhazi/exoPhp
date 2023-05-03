@@ -27,16 +27,13 @@
             </thead>
             <tbody class="bg-[white] rounded-md p-20 shadow-md" >
                 <?php
-                include 'dbconnect.php';
+                
+                include 'employesRepository.php';
 
+                $employes=$employeRepo->getAllEmployes();
+                foreach($employes as $row):
 
-                $sql="SELECT * FROM employes";
-                $result=$connection->query($sql);
-
-                if(!$result){
-                    die("Invalid query: " .$connection->error);
-                }
-                while($row=$result->fetch_assoc()):
+     
                     ?>  
                     <tr class='border-b dark:border-neutral-500'>
                     <td class='whitespace-nowrap px-6 py-4 font-medium'><?=  $row[id] ?></td>
@@ -51,7 +48,7 @@
                     </td>
                 </tr> 
                   <?php   ;
-                endwhile
+                endforeach
               
                 ?>
             </tbody>
