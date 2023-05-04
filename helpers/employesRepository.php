@@ -1,11 +1,11 @@
 <?php 
-include 'db.php';
+include '/var/www/zabibuPhp.test/config/db.php';
 
 
 $connection = $db->getConnection();
 
 class EmployesRepository {
-  private $connection;
+  
 
   public function __construct($connection) {
     
@@ -24,16 +24,12 @@ class EmployesRepository {
     
   }
 
-  
-
-  
-
   public function createEmploye($name, $email,$phone,$address) {
     $stmt = $this->connection->prepare("INSERT INTO employes (name, email, phone, address) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $name, $email, $phone, $address);
     $stmt->execute();
     $successMessage= 'Les données ont été insérées avec succès dans la base de données.';
-    header("location:/index.php");
+    header("Location:../index.php");
     exit;
   }
   public function getEmployeById($id) {
@@ -58,7 +54,7 @@ class EmployesRepository {
     $stmt = $this->connection->prepare("DELETE FROM employes WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
-    header("location:/index.php");
+    header("Location:../index.php");
     exit;
   }
 }

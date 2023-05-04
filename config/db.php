@@ -1,5 +1,5 @@
 <?php
- $ini = parse_ini_file('config.ini');
+ $ini = parse_ini_file('/var/www/zabibuPhp.test/config.ini');
 class Database {
     private static $instance = null;
     private $connection;
