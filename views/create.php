@@ -7,6 +7,8 @@ $_SESSION['email']=$_POST['email'];
 $_SESSION['phone']=$_POST['phone'];
 $_SESSION['address']=$_POST['address'];
 
+$error=$_SESSION['taberror']
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,10 +41,10 @@ $_SESSION['address']=$_POST['address'];
                     <input type="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $_SESSION['name']; ?>">
                     
                 </div>
-                <?php if(!empty($taberror["name"])){
-                        echo  "<span class='text-[red]'>$taberror[name]</span>";
-                    }
-                  ?>
+        
+                 <span class='text-[red] text-[12px]'><?php if(!empty($taberror["phone"])){echo $error['phone'];} ?></span>
+                    
+                  
             </div>
             <div class="mb-6">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
@@ -50,10 +52,9 @@ $_SESSION['address']=$_POST['address'];
                     <input type="text" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $_SESSION['email']; ?>">
                     
                 </div>
-                <?php if(!empty($taberror["email"])){
-                        echo  "<span class='text-[red]'>$taberror[email]</span>";
-                    }
-                  ?>
+                    <span class='text-[red] text-[12px]'><?php if(!empty($taberror["phone"])){echo $error['email'];} ?></span>
+                    
+                  
             </div>
             <div class="mb-6">
                 <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telephone</label>
@@ -61,10 +62,9 @@ $_SESSION['address']=$_POST['address'];
                     <input type="text" name="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $_SESSION['phone']; ?>">
                   
                 </div>
-                <?php if(!empty($taberror["phone"])){
-                        echo  "<span class='text-[red]'>$taberror[phone]</span>";
-                    }
-                  ?>
+                
+                <span class='text-[red] text-[12px] h-6'><?php if(!empty($taberror["phone"])){echo $error['phone'];} ?></span>     
+                 
             </div>
             <div class="mb-6">
                 <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
@@ -72,10 +72,9 @@ $_SESSION['address']=$_POST['address'];
                     <input type="text" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $_SESSION['address']; ?>">
                   
                 </div>
-                <?php if(!empty($taberror["address"])){
-                        echo  "<span class='text-[red]'>$taberror[address]</span>";
-                    }
-                  ?>
+              
+                <span class='text-[red] text-[12px]'><?php if(!empty($taberror["address"])){echo $error['address'];} ?></span>
+                    
             </div>
             <?php
              if (!empty($successMessage)) {
