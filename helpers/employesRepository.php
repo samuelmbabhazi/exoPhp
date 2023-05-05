@@ -45,7 +45,7 @@ class EmployesRepository {
     $stmt->bind_param("ssssi", $name, $email,$phone,$address, $id);
     $stmt->execute();
     $successMessage="client updated correctly";
-
+    header('Location:../index.php');  
     
     
   }

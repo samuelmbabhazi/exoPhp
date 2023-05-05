@@ -1,5 +1,11 @@
 <?php 
-include '/var/www/zabibuPhp.test/helpers/validation.php';
+session_start();
+include '/var/www/zabibuPhp.test/logic/create.logic.php';
+
+$_SESSION['name']=$_POST['name'];
+$_SESSION['email']=$_POST['email'];
+$_SESSION['phone']=$_POST['phone'];
+$_SESSION['address']=$_POST['address'];
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +36,7 @@ include '/var/www/zabibuPhp.test/helpers/validation.php';
             <div class="mb-6">
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom</label>
                 <div>
-                    <input type="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $name; ?>">
+                    <input type="text" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $_SESSION['name']; ?>">
                     
                 </div>
                 <?php if(!empty($taberror["name"])){
@@ -41,7 +47,7 @@ include '/var/www/zabibuPhp.test/helpers/validation.php';
             <div class="mb-6">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                 <div>
-                    <input type="text" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $email; ?>">
+                    <input type="text" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $_SESSION['email']; ?>">
                     
                 </div>
                 <?php if(!empty($taberror["email"])){
@@ -52,7 +58,7 @@ include '/var/www/zabibuPhp.test/helpers/validation.php';
             <div class="mb-6">
                 <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telephone</label>
                 <div>
-                    <input type="text" name="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $phone; ?>">
+                    <input type="text" name="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $_SESSION['phone']; ?>">
                   
                 </div>
                 <?php if(!empty($taberror["phone"])){
@@ -63,7 +69,7 @@ include '/var/www/zabibuPhp.test/helpers/validation.php';
             <div class="mb-6">
                 <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
                 <div>
-                    <input type="text" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $address; ?>">
+                    <input type="text" name="address" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $_SESSION['address']; ?>">
                   
                 </div>
                 <?php if(!empty($taberror["address"])){

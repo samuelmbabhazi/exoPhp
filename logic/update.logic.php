@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 
 require '/var/www/zabibuPhp.test/vendor/autoload.php';
@@ -18,7 +17,17 @@ $validator->add('email', 'required | email');
 $validator->add('phone', 'required');
 $validator->add('address', 'required');
 
-
+if ($_SERVER['REQUEST_METHOD']=='GET') {
+ 
+    $id=$_GET["id"];
+  
+    $row =$employeRepo->getEmployeById($id);
+  
+    $name=$row["name"];
+    $email=$row["email"];
+    $phone=$row["phone"];
+    $address=$row["address"];
+  }
 
 
 if ($_SERVER['REQUEST_METHOD'] =='POST') {
@@ -26,9 +35,9 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
 
     if ($validator->validate($data)) {
     
-        $employeRepo->createEmploye($data['name'], $data['email'], $data['phone'], $data['address']);
-
-    
+        $employeRepo->updateEmploye($data['name'], $data['email'], $data['phone'], $data['address'],$data['id']);
+        
+          
     } else {
 
     
@@ -44,4 +53,5 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
        
     }
 }
+
 ?>

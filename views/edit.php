@@ -1,36 +1,6 @@
 <?php
-include '/var/www/zabibuPhp.test/helpers/validation.php'; 
 
-
-
-if ($_SERVER['REQUEST_METHOD']=='GET') {
- 
-  $id=$_GET["id"];
-
-  $row =$employeRepo->getEmployeById($id);
-
-  $name=$row["name"];
-  $email=$row["email"];
-  $phone=$row["phone"];
-  $address=$row["address"];
-}
-if($_SERVER['REQUEST_METHOD']=='POST'){
-    $id=$_POST["id"];
-    $name=$_POST["name"];
-    $email=$_POST["email"];
-    $phone=$_POST["phone"];
-    $address=$_POST["address"];
-
-
-
-    $employeRepo->updateEmploye($name,$email,$phone,$address,$id);
-    
-    
-
-   
- 
-
-}
+include '/var/www/zabibuPhp.test/logic/update.logic.php'; 
 
 ?>
 <!DOCTYPE html>
