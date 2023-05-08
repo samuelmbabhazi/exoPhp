@@ -1,6 +1,29 @@
 <?php
+include '/var/www/zabibuPhp.test/employes/employes.controllers.php';
 
-include '/var/www/zabibuPhp.test/logic/update.logic.php'; 
+
+  
+    if ($_SERVER['REQUEST_METHOD']=='GET') {
+   
+        $id=$_GET["id"];
+      
+        $row =$employeRepo->getEmployeById($id);
+      
+        $name=$row["name"];
+        $email=$row["email"];
+        $phone=$row["phone"];
+        $address=$row["address"];
+
+       
+        
+      }
+      if ($_SERVER['REQUEST_METHOD'] =='POST') {
+        $data = $_POST;
+        $controller->update($data);
+    
+    }
+      
+
 
 ?>
 <!DOCTYPE html>

@@ -1,13 +1,16 @@
 <?php 
-session_start();
-include '/var/www/zabibuPhp.test/logic/create.logic.php';
 
-$_SESSION['name']=$_POST['name'];
-$_SESSION['email']=$_POST['email'];
-$_SESSION['phone']=$_POST['phone'];
-$_SESSION['address']=$_POST['address'];
+include '/var/www/zabibuPhp.test/employes/employes.controllers.php';
 
-$error=$_SESSION['taberror']
+
+
+$error=$_SESSION['taberror'];
+if ($_SERVER['REQUEST_METHOD'] =='POST') {
+    $data = $_POST;
+    $controller->create($data);
+
+
+}
 
 ?>
 <!DOCTYPE html>
@@ -42,7 +45,7 @@ $error=$_SESSION['taberror']
                     
                 </div>
         
-                 <span class='text-[red] text-[12px]'><?php if(!empty($taberror["phone"])){echo $error['phone'];} ?></span>
+                 <span class='text-[red] text-[12px]'><?php if(!empty($error["name"])){echo $error['phone'];} ?></span>
                     
                   
             </div>
@@ -52,7 +55,7 @@ $error=$_SESSION['taberror']
                     <input type="text" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="<?php echo $_SESSION['email']; ?>">
                     
                 </div>
-                    <span class='text-[red] text-[12px]'><?php if(!empty($taberror["phone"])){echo $error['email'];} ?></span>
+                    <span class='text-[red] text-[12px]'><?php if(!empty($error["email"])){echo $error['email'];} ?></span>
                     
                   
             </div>
@@ -63,7 +66,7 @@ $error=$_SESSION['taberror']
                   
                 </div>
                 
-                <span class='text-[red] text-[12px] h-6'><?php if(!empty($taberror["phone"])){echo $error['phone'];} ?></span>     
+                <span class='text-[red] text-[12px] h-6'><?php if(!empty($error["phone"])){echo $error['phone'];} ?></span>     
                  
             </div>
             <div class="mb-6">
@@ -73,7 +76,7 @@ $error=$_SESSION['taberror']
                   
                 </div>
               
-                <span class='text-[red] text-[12px]'><?php if(!empty($taberror["address"])){echo $error['address'];} ?></span>
+                <span class='text-[red] text-[12px]'><?php if(!empty($error["address"])){echo $error['address'];} ?></span>
                     
             </div>
             <?php
