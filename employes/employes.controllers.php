@@ -1,89 +1,54 @@
 <?php
 session_start();
-require '/var/www/zabibuPhp.test/vendor/autoload.php';
-include '/var/www/zabibuPhp.test/employes/employes.repository.php';
-use Sirius\Validation\Validator;
+include 'employes.service.php';
 
 
 
 
 class Controller {
-    private $employeRepo;
-
+ private $service;
   
-    public function __construct( $employeRepo) {
-      $this->employeRepo = $employeRepo;
-      
-    }
-  
- 
-public function create($data) {
-$validator = new Validator();
-
-$validator->add('name', 'required');
-$validator->add('email', 'required | email');
-$validator->add('phone', 'required');
-$validator->add('address', 'required');
-
-$_SESSION['name']=$_POST['name'];
-$_SESSION['email']=$_POST['email'];
-$_SESSION['phone']=$_POST['phone'];
-$_SESSION['address']=$_POST['address'];
-
-
-if($validator->validate($data)){
-    $this->employeRepo->createEmploye($data['name'], $data['email'], $data['phone'], $data['address']); 
-    header('Location:../index.php');
-}
-else{
-
-        $taberror=[];
-       
-        foreach ($validator->getMessages() as $field => $messages) {
-           
-            $taberror[$field] = sprintf('%s',implode(', ', $messages));
-      }
-      $_SESSION['taberror'] = $taberror;
-    }
-}
-   
-  
-public function update($data) {
-     
-        
-        
-  $validator = new Validator();
-
-  $validator->add('name', 'required');
-  $validator->add('email', 'required | email');
-  $validator->add('phone', 'required');
-  $validator->add('address', 'required');
-  
-  
-      if ($validator->validate($data)) {
-      
-        $this->employeRepo->updateEmploye($data['name'], $data['email'], $data['phone'], $data['address'],$data['id']);
-         
-          header('Location:../index.php');  
-            
-      } else {
-  
-      
-         $taberror=[];
-         
-          foreach ($validator->getMessages() as $field => $messages) {
-             
-              $taberror[$field] = sprintf('%s',implode(', ', $messages));
-             
-  
-         }  
-         $_SESSION['taberror'] = $taberror;
-         
-      }
-  
-}
-  
-    
+  public function __construct(Service $service) {
+  $this->service = $service;
   }
-  $controller=new Controller($employeRepo);
+  
+  public function listItems() {
+  // récupérer la liste des éléments depuis le service
+
+
+  $this->service->getItems();
+
+  
+  
+  // afficher la liste des éléments
+  // ...
+  }
+  
+  
+  
+  public function createItem($data) {
+  // créer un nouvel élément avec les données fournies
+  $this->service->createItem($data);
+  
+
+  }
+  
+  public function updateItem($data) {
+  // mettre à jour l'élément avec l'ID donné avec les données fournies
+  $this->service->updateItem($data);
+  
+  
+  }
+  
+  public function deleteItem($id) {
+  // supprimer l'élément avec l'ID donné
+  $this->service->deleteItem($id);
+  
+  header('Location:../index.php');
+  }
+  }
+  $controller=new Controller($service);
+
+
+
   ?>
