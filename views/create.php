@@ -1,13 +1,17 @@
-<?php 
+<?php
+session_start();
 
 include '../employes/employes.controllers.php';
 
+$_SESSION['name'] = $_POST['name'];
+$_SESSION['email'] = $_POST['email'];
+$_SESSION['phone'] = $_POST['phone'];
+$_SESSION['address'] = $_POST['address'];
 
-
-$error=$_SESSION['taberror'];
-if ($_SERVER['REQUEST_METHOD'] =='POST') {
+$error = $_SESSION['taberror'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = $_POST;
-    $controller->createItem($data);
+    $controller->createItem($_POST);
 
 
 }
@@ -36,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
                 </div>
 
             ";
-        } 
+        }
         ?>
 
         <form method="post" action="create.php"
@@ -50,7 +54,11 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
 
                 </div>
 
-                <span class='text-[red] text-[12px]'><?php if(!empty($error["name"])){echo $error['phone'];} ?></span>
+                <span class='text-[red] text-[12px]'>
+                    <?php if (!empty($error["name"])) {
+                        echo $error['phone'];
+                    } ?>
+                </span>
 
 
             </div>
@@ -62,7 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
                         value="<?php echo $_SESSION['email']; ?>">
 
                 </div>
-                <span class='text-[red] text-[12px]'><?php if(!empty($error["email"])){echo $error['email'];} ?></span>
+                <span class='text-[red] text-[12px]'>
+                    <?php if (!empty($error["email"])) {
+                        echo $error['email'];
+                    } ?>
+                </span>
 
 
             </div>
@@ -76,8 +88,11 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
 
                 </div>
 
-                <span
-                    class='text-[red] text-[12px] h-6'><?php if(!empty($error["phone"])){echo $error['phone'];} ?></span>
+                <span class='text-[red] text-[12px] h-6'>
+                    <?php if (!empty($error["phone"])) {
+                        echo $error['phone'];
+                    } ?>
+                </span>
 
             </div>
             <div class="mb-6">
@@ -90,12 +105,15 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
 
                 </div>
 
-                <span
-                    class='text-[red] text-[12px]'><?php if(!empty($error["address"])){echo $error['address'];} ?></span>
+                <span class='text-[red] text-[12px]'>
+                    <?php if (!empty($error["address"])) {
+                        echo $error['address'];
+                    } ?>
+                </span>
 
             </div>
             <?php
-             if (!empty($successMessage)) {
+            if (!empty($successMessage)) {
                 echo "
                     <div class='p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-red-400'>
                     <strong>$successMessage</strong>
@@ -103,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
                     </div>
     
                 ";
-            } 
+            }
             ?>
             <div class="flex justify-center items-center">
 

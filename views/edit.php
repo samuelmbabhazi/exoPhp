@@ -2,27 +2,27 @@
 include '../employes/employes.controllers.php';
 
 
-$error=$_SESSION['taberror'];
-    if ($_SERVER['REQUEST_METHOD']=='GET') {
-   
-        $id=$_GET["id"];
-      
-        $row =$employeRepo->getEmployeById($id);
-      
-        $name=$row["name"];
-        $email=$row["email"];
-        $phone=$row["phone"];
-        $address=$row["address"];
+$error = $_SESSION['taberror'];
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
-       
-        
-      }
-      if ($_SERVER['REQUEST_METHOD'] =='POST') {
-        $data = $_POST;
-        $controller->updateItem($data);
-    
-    }
-      
+    $id = $_GET["id"];
+
+    $row = $employeRepo->getEmployeById($id);
+
+    $name = $row["name"];
+    $email = $row["email"];
+    $phone = $row["phone"];
+    $address = $row["address"];
+
+
+
+}
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $data = $_POST;
+    $controller->updateItem($data);
+
+}
+
 
 
 ?>
@@ -49,7 +49,7 @@ $error=$_SESSION['taberror'];
                 </div>
 
             ";
-        } 
+        }
         ?>
 
         <form method="post" class="flex bg-[white] rounded-md p-20 shadow-md justify-center items-center flex-col">
@@ -59,51 +59,51 @@ $error=$_SESSION['taberror'];
                 <div>
                     <input type="text" name="name"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        value="<?php echo "$name" ?>">
+                        value="<?php echo $_SESSION['name']; ?>">
                 </div>
-                <?php if(!empty($error["name"])){
-                        echo  "<span class='text-[red]'>$error[name]</span>";
-                    }
-                  ?>
+                <?php if (!empty($error["name"])) {
+                    echo "<span class='text-[red]'>$error[name]</span>";
+                }
+                ?>
             </div>
             <div class="mb-6">
                 <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                 <div>
                     <input type="text" name="email"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        value="<?php echo "$email" ?>">
+                        value="<?php echo $_SESSION['email']; ?>">
                 </div>
-                <?php if(!empty($error["email"])){
-                        echo  "<span class='text-[red]'>$error[email]</span>";
-                    }
-                  ?>
+                <?php if (!empty($error["email"])) {
+                    echo "<span class='text-[red]'>$error[email]</span>";
+                }
+                ?>
             </div>
             <div class="mb-6">
                 <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telephone</label>
                 <div>
                     <input type="text" name="phone"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        value="<?php echo "$phone" ?>">
+                        value="<?php echo $_SESSION['phone']; ?>">
                 </div>
-                <?php if(!empty($error["phone"])){
-                        echo  "<span class='text-[red]'>$error[phone]</span>";
-                    }
-                  ?>
+                <?php if (!empty($error["phone"])) {
+                    echo "<span class='text-[red]'>$error[phone]</span>";
+                }
+                ?>
             </div>
             <div class="mb-6">
                 <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
                 <div>
                     <input type="text" name="address"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        value="<?php echo "$address" ?>">
+                        value="<?php echo $_SESSION['address']; ?>">
                 </div>
-                <?php if(!empty($error["address"])){
-                        echo  "<span class='text-[red]'>$error[address]</span>";
-                    }
-                  ?>
+                <?php if (!empty($error["address"])) {
+                    echo "<span class='text-[red]'>$error[address]</span>";
+                }
+                ?>
             </div>
             <?php
-             if (!empty($successMessage)) {
+            if (!empty($successMessage)) {
                 echo "
                     <div class='p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-red-400'>
                     <strong>$successMessage</strong>
@@ -111,7 +111,7 @@ $error=$_SESSION['taberror'];
                     </div>
     
                 ";
-            } 
+            }
             ?>
             <div class="flex justify-center items-center">
 
